@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4efe6" />
+    <title>拾页 · 笔记</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell" aria-label="拾页笔记应用">
+      <aside class="sidebar" id="sidebar">
+        <header class="brand-row">
+          <div>
+            <p class="eyebrow">MY NOTEBOOK</p>
+            <h1>拾页</h1>
+          </div>
+          <button class="icon-button new-note-button" id="new-note" type="button" aria-label="新建笔记" title="新建笔记">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+          </button>
+        </header>
+
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4 4" /></svg>
+          <input id="search" type="search" placeholder="搜索笔记…" autocomplete="off" aria-label="搜索笔记" />
+          <kbd>⌘ K</kbd>
+        </div>
+
+        <div class="list-heading">
+          <span>全部笔记</span>
+          <span id="note-count">0 篇</span>
+        </div>
+
+        <div class="note-list" id="note-list" aria-live="polite"></div>
+
+        <footer class="sidebar-footer">
+          <span class="status-dot"></span>
+          <span>已保存在此设备</span>
+        </footer>
+      </aside>
+
+      <section class="editor" id="editor">
+        <div class="editor-toolbar">
+          <button class="mobile-menu" id="mobile-menu" type="button" aria-label="打开笔记列表">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+          </button>
+          <div class="save-state" id="save-state"><span></span> 已保存</div>
+          <div class="toolbar-actions">
+            <button class="text-button" id="pin-note" type="button" aria-label="置顶当前笔记">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 6 2-1 5 3 3-5 1-3.5 5L9 14l-4-2 4-3V4Z" /></svg>
+              <span>置顶</span>
+            </button>
+            <button class="text-button danger" id="delete-note" type="button" aria-label="删除当前笔记">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M9 7V4h6v3m2 0-1 13H8L7 7m3 4v5m4-5v5" /></svg>
+              <span>删除</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="paper" id="paper">
+          <div class="date-line" id="note-date"></div>
+          <input class="title-input" id="note-title" type="text" placeholder="无标题笔记" maxlength="120" aria-label="笔记标题" />
+          <div class="title-rule"><span></span></div>
+          <textarea id="note-content" placeholder="从这里开始记录…" aria-label="笔记内容" spellcheck="true"></textarea>
+        </div>
+
+        <footer class="editor-footer">
+          <span id="word-count">0 字</span>
+          <span class="shortcut-hint"><kbd>Ctrl</kbd> + <kbd>N</kbd> 新建笔记</span>
+        </footer>
+
+        <div class="empty-editor" id="empty-editor" hidden>
+          <div class="empty-mark">页</div>
+          <h2>还没有笔记</h2>
+          <p>写下一点想法，让今天留下痕迹。</p>
+          <button id="empty-new-note" type="button">新建第一篇笔记</button>
+        </div>
+      </section>
+    </main>
+
+    <div class="mobile-backdrop" id="mobile-backdrop"></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <dialog id="delete-dialog">
+      <form method="dialog">
+        <div class="dialog-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M9 7V4h6v3m2 0-1 13H8L7 7m3 4v5m4-5v5" /></svg>
+        </div>
+        <h2>删除这篇笔记？</h2>
+        <p>删除后无法恢复，请确认是否继续。</p>
+        <div class="dialog-actions">
+          <button value="cancel" class="cancel-button">取消</button>
+          <button value="confirm" class="confirm-button">确认删除</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
